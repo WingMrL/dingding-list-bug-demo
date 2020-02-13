@@ -1,24 +1,14 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
-import { observer, inject } from '@tarojs/mobx'
+import { View, ScrollView, Button } from '@tarojs/components'
+import { observer } from '@tarojs/mobx'
+
+import ListItem from '../../component/list-item/index';
+import { IListItem, indexStore, genData } from '../../store/index';
 
 import './index.scss'
 
-type PageStateProps = {
-  counterStore: {
-    counter: number,
-    increment: Function,
-    decrement: Function,
-    incrementAsync: Function
-  }
-}
 
-interface Index {
-  props: PageStateProps;
-}
-
-@inject('counterStore')
 @observer
 class Index extends Component {
 
@@ -33,43 +23,37 @@ class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
-
-  componentWillReact () {
-    console.log('componentWillReact')
-  }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  increment = () => {
-    const { counterStore } = this.props
-    counterStore.increment()
-  }
-
-  decrement = () => {
-    const { counterStore } = this.props
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props
-    counterStore.incrementAsync()
+  handleInitData = async () => {
+    console.log('数据获取中');
+    const resp = await new Promise<IListItem[]>((resolve, reject) => {
+      setTimeout(() => {
+        const list = genData();
+        resolve(list);
+      }, 50);
+    });
+    console.log('数据获取 ok');
+    indexStore.setList(resp);
   }
 
   render () {
-    const { counterStore: { counter } } = this.props
+    const { list } = indexStore;
     return (
       <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+        <Button onClick={this.handleInitData}>加载数据</Button>
+        <ScrollView
+          className='scroll-view'
+          onScrollToLower={this.handleInitData}
+          scrollY
+        >
+          {
+            list.map((item) => {
+              const { id, value } = item;
+              return (
+                <ListItem key={id} value={value}></ListItem>
+              );
+            })
+          }
+        </ScrollView>
       </View>
     )
   }

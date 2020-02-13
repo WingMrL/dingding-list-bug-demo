@@ -5,18 +5,45 @@
     "no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
-    "@typescript-eslint/member-delimiter-style": {
+    "@typescript-eslint/member-delimiter-style": ["error", {
       "multiline": {
-        "delimiter": "none",
-        "requireLast": false
+        "delimiter": "semi",
+        "requireLast": true
       },
       "singleline": {
-        "delimiter": "none",
+        "delimiter": "semi",
         "requireLast": false
       }
-    },
+    }],
     "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-empty-function": ["warn"]
+    "@typescript-eslint/no-empty-function": ["warn"],
+
+    "import/prefer-default-export": "off",
+    "import/no-commonjs": "off",
+
+    // config不需要写在componentWillMount/componentDidMount下面
+    "react/sort-comp": 0,
+
+    "@typescript-eslint/no-var-requires": 0,
+
+    // 声明一个有类型的变量时可以赋初始值
+    "@typescript-eslint/no-inferrable-types": false,
+
+    "@typescript-eslint/interface-name-prefix": ["error", { "prefixWithI": "always" }],
+    // 可以使用any
+    "@typescript-eslint/no-explicit-any": 0,
+
+    // 如果ts推断一个值得类型不是null(undefined或其他)，可以使用断言
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "react/jsx-closing-bracket-location": 0,
+    // 缩进
+    "react/jsx-indent-props": 0,
+    // 简括号
+    "react/no-unescaped-entities": 0,
+
+    "@typescript-eslint/ban-ts-ignore": 0,
+    // 绝对引入不需要再相对引入前面
+    "import/first": 0
   },
   "parserOptions": {
     "ecmaFeatures": {

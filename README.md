@@ -6,6 +6,8 @@
 
 需要先全局安装 Taro 2.0，相关链接：https://nervjs.github.io/taro/docs/GETTING-STARTED.html
 
+`Node Version: 10.17.0`
+
 ```
 # 使用 npm 安装 CLI
 $ npm install -g @tarojs/cli
@@ -19,5 +21,16 @@ $ cnpm install -g @tarojs/cli
 
 ```
 yarn install
-// or npm
 ```
+
+## Dev
+
+```
+yarn dev:alipay
+```
+
+然后打开 钉钉小程序开发者工具，选择第三方企业应用，打开项目，选择 `dist` 目录。
+
+![](https://store-g1.seewo.com/9f652def60fa427980c6f01149163a7c)
+
+![](https://store-g1.seewo.com/4c22e7d23746420ba5e5f71354fc91fd)
