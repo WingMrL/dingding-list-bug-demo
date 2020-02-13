@@ -1,0 +1,3 @@
+<view class="index-container">
+  <button class="add-data">加载数据</button>
+</view>
