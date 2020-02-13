@@ -37,3 +37,16 @@ yarn dev:alipay
 
 Enjoy youself!
 
+## Bug 复现
+
+使用苹果设置扫码调试，点击页面中的“加载数据”。 首次加载应该是正常的：
+
+![](https://store-g1.seewo.com/89532b73dc784129b3db0a3fe2f59b11)
+
+再点一次“加载数据”，正常情况应该是：
+
+![](https://store-g1.seewo.com/e99b683de1dc425385f0027c65cf9721)
+
+实际：
+
+![](https://store-g1.seewo.com/dc4ab0b7bb44400987ffd8456c1817f3)
