@@ -1,3 +1,6 @@
-<view class="index-container">
-  <button class="add-data">加载数据</button>
+<view class="index">
+    <button onTap="handleInitData">加载数据</button>
+    <scroll-view class="scroll-view" onScrollToLower="handleInitData" scroll-y="{{true}}">
+        <list-item a:key="id" a:for="{{list}}" a:for-item="item" value="{{item.value}}"></list-item>
+    </scroll-view>
 </view>

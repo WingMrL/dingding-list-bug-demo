@@ -1,1 +1,6 @@
-{}
+{
+    "usingComponents": {
+        "list-item":"../../components/list-item/index"
+    },
+    "defaultTitle":"首页"
+}
